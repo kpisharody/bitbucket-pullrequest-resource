@@ -23,7 +23,8 @@ export class CheckCommand {
             prs.push(version);
         }
 
-        return prs.sort((n1, n2) => {
+        return prs.filter(value => value.branch == source.branch)
+            .sort((n1, n2) => {
             if (n1.date > n2.date) {
                 return 1;
             }

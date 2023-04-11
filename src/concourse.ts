@@ -9,6 +9,8 @@ export interface SourceConfig {
         private_key: string;
     };
     log_level?: string;
+    
+    branch?: string
 }
 
 export interface Version {
