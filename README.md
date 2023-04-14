@@ -12,7 +12,7 @@ resource_types:
   - name: bitbucket-pullrequest
     type: docker-image
     source:
-      repository: kpisharody/bitbucket-pullrequest-resource
+      repository: ghcr.io/kpisharody/bitbucket-pullrequest-resource
 ```
 
 ## Source Configuration
