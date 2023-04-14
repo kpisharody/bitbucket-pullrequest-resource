@@ -20,6 +20,8 @@ export class CheckCommand {
         );
 
         if (version != null) {
+            console.log("Version ");
+            console.log(version.branch);
             prs.push(version);
         }
 

@@ -37,7 +37,7 @@ class BitBucketClient {
                 const commit = JSON.parse(yield this._cacheRequester.get(commitUrl));
                 result.push({
                     id: String(pr.id),
-                    branch: pr.source.branch.name,
+                    branch: pr.destination.branch.name,
                     commit: pr.source.commit.hash,
                     date: commit.date,
                 });

@@ -34,6 +34,19 @@ export interface PullRequestResponse {
 interface PullRequestsResponse {
     values: [{
         id: string;
+        destination: {
+            branch: {
+                name: string;
+            };
+            commit: {
+                hash: string;
+                links: {
+                    self: {
+                        href: string;
+                    };
+                };
+            };
+        };
         source: {
             branch: {
                 name: string;

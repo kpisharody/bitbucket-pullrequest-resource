@@ -39,6 +39,19 @@ export interface PullRequestResponse {
 interface PullRequestsResponse {
     values: [{
         id: string;
+        destination: {
+            branch: {
+                name: string;
+            },
+            commit: {
+                hash: string;
+                links: {
+                    self: {
+                        href: string;
+                    },
+                },
+            },
+        };
         source: {
             branch: {
                 name: string;
@@ -94,9 +107,10 @@ export class BitBucketClient {
             const commitUrl = pr.source.commit.links.self.href.replace('https://bitbucket.org/!api', 'https://bitbucket.org/api');
             this._logger.debug(`BitBucketClient.getPullRequests() - commitUrl: ${commitUrl}`);
             const commit: Commit = JSON.parse(await this._cacheRequester.get(commitUrl));
+            console.log(pr.destination.branch.name);
             result.push({
                 id: String(pr.id),
-                branch: pr.source.branch.name,
+                branch: pr.destination.branch.name,
                 commit: pr.source.commit.hash,
                 date: commit.date,
             });
