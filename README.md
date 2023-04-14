@@ -1,7 +1,8 @@
 # BitBucket Pull Request Resource
 
 Tracks BitBucket Pull Requests made to a particular repo.
-
+Inspired highly / forked from halter-corp/bitbucket-pullrequest-resource
+* Updated the source reference in such a way that it includes thr provision to provide a specific branch to monitor
 ## Deploying to Concourse
 
 You need to add the resource type to your pipeline:
@@ -11,7 +12,7 @@ resource_types:
   - name: bitbucket-pullrequest
     type: docker-image
     source:
-      repository: halternz/bitbucket-pullrequest-resource
+      repository: kpisharody/bitbucket-pullrequest-resource
 ```
 
 ## Source Configuration
@@ -109,3 +110,10 @@ Update the build status of pull request with desired state.
 
 * `description`: *Optional.* Description of the build result.
 
+#### Local Build and ghcr publish
+
+* install node and yarn in local machine
+* yarn install
+* yarn build
+* Ensure files in /dist is updated and pushed to repository
+* Create PR to master and after merge ensure that docker image is getting published through github ui -> actions page
