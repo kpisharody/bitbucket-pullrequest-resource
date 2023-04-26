@@ -37,7 +37,7 @@ function main() {
         let argv = mainOptions._unknown || [];
         const bitBucketClient = new bitbucket_1.BitBucketClient(logger, concourseRequest.source.username, concourseRequest.source.password, fs);
         const execute = new exec_1.Execute();
-        logger.debug('stdin: ' + stdin);
+        logger.error('stdin: ' + stdin);
         let commandOutput;
         switch (mainOptions.command) {
             case 'check': {

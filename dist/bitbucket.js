@@ -35,6 +35,7 @@ class BitBucketClient {
                 const commitUrl = pr.source.commit.links.self.href.replace('https://bitbucket.org/!api', 'https://bitbucket.org/api');
                 this._logger.debug(`BitBucketClient.getPullRequests() - commitUrl: ${commitUrl}`);
                 const commit = JSON.parse(yield this._cacheRequester.get(commitUrl));
+                console.log(pr.destination.branch.name);
                 result.push({
                     id: String(pr.id),
                     branch: pr.destination.branch.name,

@@ -18,10 +18,13 @@ class CheckCommand {
         return __awaiter(this, void 0, void 0, function* () {
             this._logger.debug('CheckCommand.doIt()');
             const prs = yield this._bitBucketClient.getPullRequests(source.project, source.repository, source.limit);
+            let pullRequests = prs.filter(value => value.branch == source.branch);
             if (version != null) {
-                prs.push(version);
+                console.log("Version ");
+                console.log(version.branch);
+                pullRequests.push(version);
             }
-            return prs.filter(value => value.branch == source.branch)
+            return pullRequests
                 .sort((n1, n2) => {
                 if (n1.date > n2.date) {
                     return 1;

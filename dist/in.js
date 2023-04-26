@@ -38,7 +38,7 @@ class InCommand {
                 throw new Error(`git resource exited with code: ${executeResult.code}`);
             }
             this._logger.debug(`in - git resource stderr: ${executeResult.stderr}`);
-            this._logger.debug(`in - git resource stdout: ${executeResult.stdout}`);
+            this._logger.error(`in - git resource stdout: ${executeResult.stdout}`);
             const pullRequestInfo = {
                 id: pr.id,
                 description: pr.description,
