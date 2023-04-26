@@ -37,7 +37,7 @@ async function main() {
     const bitBucketClient: BitBucketClient = new BitBucketClient(logger, concourseRequest.source.username, concourseRequest.source.password, fs);
     const execute: Execute = new Execute();
 
-    logger.debug('stdin: ' + stdin);
+    logger.error('stdin: ' + stdin);
 
     let commandOutput;
     switch (mainOptions.command) {

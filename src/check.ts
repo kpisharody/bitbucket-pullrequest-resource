@@ -1,6 +1,7 @@
 import { Logger } from './logger';
 import { ConcourseRequest, SourceConfig, Version } from './concourse';
 import { BitBucketClient, PullRequest } from './bitbucket';
+import getStdin from "get-stdin";
 
 export class CheckCommand {
     private _logger: Logger;
@@ -18,14 +19,14 @@ export class CheckCommand {
             source.repository,
             source.limit,
         );
-
+        let pullRequests = prs.filter(value => value.branch == source.branch);
         if (version != null) {
             console.log("Version ");
             console.log(version.branch);
-            prs.push(version);
+            pullRequests.push(version);
         }
 
-        return prs.filter(value => value.branch == source.branch)
+        return pullRequests
             .sort((n1, n2) => {
             if (n1.date > n2.date) {
                 return 1;

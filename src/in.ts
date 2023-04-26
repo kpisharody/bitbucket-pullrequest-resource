@@ -57,7 +57,7 @@ export class InCommand {
         }
 
         this._logger.debug(`in - git resource stderr: ${executeResult.stderr}`);
-        this._logger.debug(`in - git resource stdout: ${executeResult.stdout}`);
+        this._logger.error(`in - git resource stdout: ${executeResult.stdout}`);
 
         // write pull-request-info for use with out resource
         const pullRequestInfo: PullRequestInfo = {
