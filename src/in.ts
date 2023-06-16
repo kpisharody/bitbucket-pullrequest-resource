@@ -3,6 +3,7 @@ import { ConcourseRequest, SourceConfig, Version, ConcourseResponse, PullRequest
 import { BitBucketClient, PullRequest, PullRequestResponse } from './bitbucket';
 import { execFile } from 'child_process';
 import { Execute } from './exec';
+import * as process from "process";
 
 interface GitResourcePayload {
     source: {
@@ -29,6 +30,7 @@ export class InCommand {
     }
 
     async doIt(source: SourceConfig, destination: string, version: Version): Promise<ConcourseResponse> {
+        process.stderr.write("Project "+source.project+"Repository"+source.repository+"Version "+version.id);
         this._logger.debug('InCommand.doIt(source, destination, version)');
         this._logger.debug(`InCommand.doIt() - source: ${JSON.stringify(source)}`);
         this._logger.debug(`InCommand.doIt() - destination: ${JSON.stringify(destination)}`);

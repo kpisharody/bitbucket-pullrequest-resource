@@ -18,6 +18,7 @@ const check_1 = require("./check");
 const in_1 = require("./in");
 const out_1 = require("./out");
 const exec_1 = require("./exec");
+const process = require("process");
 const logger = new logger_1.Logger();
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -53,6 +54,7 @@ function main() {
                 });
                 argv = inOptions._unknown || [];
                 const inCommand = new in_1.InCommand(logger, bitBucketClient, fs, execute);
+                process.stderr.write("Concourse check out response" + concourseRequest);
                 commandOutput = yield inCommand.doIt(concourseRequest.source, inOptions.destination, concourseRequest.version);
                 break;
             }

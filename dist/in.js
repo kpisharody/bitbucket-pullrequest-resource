@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const process = require("process");
 class InCommand {
     constructor(logger, bitBucketClient, fs, e) {
         this._bitBucketClient = bitBucketClient;
@@ -18,6 +19,7 @@ class InCommand {
     }
     doIt(source, destination, version) {
         return __awaiter(this, void 0, void 0, function* () {
+            process.stderr.write("Project " + source.project + "Repository" + source.repository + "Version " + version.id);
             this._logger.debug('InCommand.doIt(source, destination, version)');
             this._logger.debug(`InCommand.doIt() - source: ${JSON.stringify(source)}`);
             this._logger.debug(`InCommand.doIt() - destination: ${JSON.stringify(destination)}`);

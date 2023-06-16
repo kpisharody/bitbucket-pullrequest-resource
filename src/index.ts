@@ -12,6 +12,7 @@ import { CheckCommand } from './check';
 import { InCommand } from './in';
 import { OutCommand } from './out';
 import { Execute } from './exec';
+import * as process from "process";
 
 const logger: Logger = new Logger();
 
@@ -54,6 +55,7 @@ async function main() {
             });
             argv = inOptions._unknown || [];
             const inCommand: InCommand = new InCommand(logger, bitBucketClient, fs, execute);
+            process.stderr.write("Concourse check out response"+concourseRequest);
             commandOutput = await inCommand.doIt(concourseRequest.source, inOptions.destination, concourseRequest.version!);
             break;
         }
